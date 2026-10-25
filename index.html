@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIT Campus AI Helpdesk Assistant | Student Support & Navigation</title>
+  <meta name="description" content="Official Student Support Virtual Helpdesk for Vellore Institute of Technology (VIT). Grounded FAQ navigation, lab schedules, exam library access, and staff escalation.">
+  <link rel="stylesheet" href="style.css?v=2.6">
+  
+  <!-- Professional Institutional Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Academic Navigation Header -->
+  <header class="app-header">
+    <div class="header-container">
+      
+      <!-- Brand & Crest -->
+      <div class="brand" onclick="document.getElementById('btn-tab-chat').click()">
+        <div class="brand-crest" title="VIT Campus Helpdesk">
+          <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="shieldGrad" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#0F275A"/>
+                <stop offset="55%" stop-color="#1E3A8A"/>
+                <stop offset="100%" stop-color="#2563EB"/>
+              </linearGradient>
+              <linearGradient id="goldCapGrad" x1="12" y1="8" x2="32" y2="22" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#FDE68A"/>
+                <stop offset="60%" stop-color="#F59E0B"/>
+                <stop offset="100%" stop-color="#D97706"/>
+              </linearGradient>
+            </defs>
+            <!-- Shield Base with Outer Rim -->
+            <path d="M22 3.5L8 8.8V19.5C8 28.5 14 36.8 22 40.5C30 36.8 36 28.5 36 19.5V8.8L22 3.5Z" fill="url(#shieldGrad)" stroke="rgba(255, 255, 255, 0.4)" stroke-width="1.2"/>
+            <path d="M22 6.5L10.5 10.8V19C10.5 26.5 15.5 33.5 22 36.8C28.5 33.5 33.5 26.5 33.5 19V10.8L22 6.5Z" stroke="url(#goldCapGrad)" stroke-width="0.8" stroke-opacity="0.7"/>
+            <!-- Academic Mortarboard / Graduation Cap -->
+            <path d="M22 10.5L30.5 14.8L22 19L13.5 14.8L22 10.5Z" fill="url(#goldCapGrad)"/>
+            <path d="M16 16.2V20.2C16 22 18.7 23.5 22 23.5C25.3 23.5 28 22 28 20.2V16.2L22 19.2L16 16.2Z" fill="#FFFFFF" fill-opacity="0.9"/>
+            <path d="M30.5 14.8V19.5C30.5 20.2 29.8 20.8 29.2 20.8" stroke="#FDE68A" stroke-width="1.2" stroke-linecap="round"/>
+            <!-- Open Book of Knowledge (Policy Grounds) -->
+            <path d="M14 25.5C16.5 24.3 19.2 24.5 22 25.8C24.8 24.5 27.5 24.3 30 25.5V30.2C27.5 29 24.8 29.2 22 30.5C19.2 29.2 16.5 29 14 30.2V25.5Z" fill="#FFFFFF" fill-opacity="0.95"/>
+            <line x1="22" y1="25.8" x2="22" y2="30.5" stroke="#1E3A8A" stroke-width="1.1"/>
+            <!-- AI Beacon Star (Pinnacle of Intelligence) -->
+            <circle cx="22" cy="10" r="1.3" fill="#FFFFFF"/>
+            <path d="M22 7.5V12.5M19.5 10H24.5" stroke="#FFFFFF" stroke-width="0.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <h1>
+            VIT Campus Helpdesk
+            <span class="brand-tag">Student Support</span>
+          </h1>
+          <p>Department of Student Welfare &amp; SCOPE • VIT Vellore</p>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="nav-tabs" role="tablist">
+        <button class="tab-btn active" data-tab="tab-chat" id="btn-tab-chat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Assistant
+        </button>
+        <button class="tab-btn" data-tab="tab-kb" id="btn-tab-kb">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          Knowledge Base
+        </button>
+        <button class="tab-btn" data-tab="tab-benchmark" id="btn-tab-benchmark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg>
+          Test Suite
+        </button>
+        <button class="tab-btn" data-tab="tab-staff-queries" id="btn-tab-staff-queries">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Staff Queries
+        </button>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="header-actions">
+        <button id="tts-toggle-btn" class="icon-toggle-btn active" title="Toggle Voice Readout">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <span id="tts-icon"></span> Voice: <strong id="tts-status">ON</strong>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="main-wrapper">
+
+    <!-- TAB 1: Chat Assistant -->
+    <section id="tab-chat" class="tab-content active">
+      <div class="chat-container-grid">
+        
+        <!-- Chat Panel -->
+        <div class="chat-panel">
+          <div class="chat-topbar">
+            <div class="chat-topbar-info">
+              <h2>
+                <span class="topbar-crest-icon">🏛️</span>
+                VIT AI Campus Concierge
+                <span class="live-status-pill" title="Verified against official university knowledge base">
+                  <span class="live-status-dot"></span><span class="live-status-text">Institutional Grounding</span>
+                </span>
+              </h2>
+              <span>Authoritative policy navigation, classroom locations, lab hours &amp; staff escalation</span>
+            </div>
+            <div class="topbar-actions">
+              <!-- Custom Modern AI Engine Dropdown -->
+              <div class="custom-model-dropdown" id="custom-model-dropdown">
+                <button type="button" class="model-dropdown-trigger" id="model-dropdown-trigger" aria-haspopup="true" aria-expanded="false" title="Switch AI Model">
+                  <span class="model-badge-icon">⚡</span>
+                  <span class="model-trigger-name" id="selected-model-name">Flash Lite</span>
+                  <svg class="chevron-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="model-dropdown-menu" id="model-dropdown-menu" role="menu">
+                  <div class="dropdown-header-label">ACTIVE AI MODEL</div>
+                  
+                  <div class="model-option active" data-model="gemini-3.1-flash-lite" role="menuitem">
+                    <div class="option-icon-box">⚡</div>
+                    <div class="option-content">
+                      <div class="option-title">Flash Lite <span class="active-tag">Active</span></div>
+                      <div class="option-sub">Gemini 3.1 Flash Lite • Fast &amp; Live</div>
+                    </div>
+                    <div class="option-check">✓</div>
+                  </div>
+
+                  <div class="model-option" data-model="gemini-3.5-flash-lite" role="menuitem">
+                    <div class="option-icon-box">✨</div>
+                    <div class="option-content">
+                      <div class="option-title">Flash 3.5 Lite</div>
+                      <div class="option-sub">Gemini 3.5 Flash Lite • High Accuracy</div>
+                    </div>
+                    <div class="option-check">✓</div>
+                  </div>
+
+                  <div class="model-option" data-model="gemini-flash-lite-latest" role="menuitem">
+                    <div class="option-icon-box">🪶</div>
+                    <div class="option-content">
+                      <div class="option-title">Flash Latest</div>
+                      <div class="option-sub">Gemini Flash Lite • Latest Preview</div>
+                    </div>
+                    <div class="option-check">✓</div>
+                  </div>
+
+                  <div class="dropdown-divider"></div>
+
+                  <div class="model-option" data-model="local" role="menuitem">
+                    <div class="option-icon-box">🛡️</div>
+                    <div class="option-content">
+                      <div class="option-title">Deterministic Engine</div>
+                      <div class="option-sub">Local Offline Corpus • Policy Rule-based</div>
+                    </div>
+                    <div class="option-check">✓</div>
+                  </div>
+                </div>
+              </div>
+              <button id="reset-chat-btn" class="btn-secondary" title="Clear conversation history">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                Clear
+              </button>
+            </div>
+          </div>
+
+          <!-- Messages Scroll View -->
+          <div id="chat-messages" class="chat-messages">
+            <div class="message bot">
+              <div class="avatar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div class="msg-wrapper">
+                <div class="msg-header-meta">
+                  <span class="msg-author">Campus Support Concierge</span>
+                  <span class="msg-time" id="init-bot-time">Just now</span>
+                </div>
+                <div class="bubble">
+                  <div class="welcome-box-title">
+                    <span class="welcome-title-badge">Verified Institutional Grounding</span>
+                    Welcome to the VIT Campus AI Helpdesk
+                  </div>
+                  <p class="welcome-intro">I provide instant, authoritative answers referencing official university circulars, academic handbooks, and campus directories:</p>
+                  <ul class="welcome-items">
+                    <li>
+                      <div class="welcome-item-icon">📍</div>
+                      <div><strong>Classrooms &amp; Venues:</strong> Silver Jubilee Tower (SJT Ground to 7th floor), Technology Tower (TT), Main Building (MB), and Anna Auditorium.</div>
+                    </li>
+                    <li>
+                      <div class="welcome-item-icon">⏰</div>
+                      <div><strong>Lab &amp; Library Hours:</strong> Academic computing facilities (8:00 AM – 7:30 PM) and 24/7 CAT/FAT exam reading hall access.</div>
+                    </li>
+                    <li>
+                      <div class="welcome-item-icon">🎉</div>
+                      <div><strong>Fests &amp; Co-Curriculars:</strong> Riviera, Gravitas hackathons, and club event participation via VTOP.</div>
+                    </li>
+                    <li>
+                      <div class="welcome-item-icon">📋</div>
+                      <div><strong>Administrative SOPs:</strong> FFCS course allocation, hostel outpass with proctor approval, and Gate 2 lost property desk.</div>
+                    </li>
+                  </ul>
+                  <div class="welcome-footer-note">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                    <span>Click any suggested prompt chip below or type your inquiry. Unverified queries are routed to staff with tracked tickets.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Input Bar & Suggested Prompt Chips -->
+          <div class="chat-input-wrapper">
+            <div class="prompt-suggestions-row">
+              <button class="chip-prompt" data-query="Where is SJT-G07 and how are classrooms numbered?">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                SJT-G07 Location
+              </button>
+              <button class="chip-prompt" data-query="What are the computing lab timings at SJT and TT?">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Computing Lab Hours
+              </button>
+              <button class="chip-prompt" data-query="How do students register for Gravitas or Riviera events?">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Fest Registration
+              </button>
+              <button class="chip-prompt" data-query="Are Central Library reading halls open 24/7 during exams?">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/></svg>
+                24/7 Library Access
+              </button>
+              <button class="chip-prompt" data-query="How does FFCS course registration work on VTOP?">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/></svg>
+                FFCS Course Guide
+              </button>
+              <button class="chip-prompt" data-query="What is the hostel outpass and proctor approval procedure?">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                Hostel Outpass SOP
+              </button>
+              <button class="chip-prompt" data-query="What is the emergency medical number for campus health centre?">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                Health Centre Emergency
+              </button>
+              <button class="chip-prompt warn" data-query="Can I get permission for staying late at night?">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+                Ambiguous Query Test
+              </button>
+              <button class="chip-prompt alert" data-query="What is the forecasted price of Bitcoin for tomorrow?">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" x2="19.07" y1="4.93" y2="19.07"/></svg>
+                Out-of-Scope Test
+              </button>
+            </div>
+            
+            <div class="input-box-container">
+              <input type="text" id="chat-input" class="chat-input" placeholder="Ask a question about venues, lab hours, FFCS, hostel outpass... (Press Enter to send)" autocomplete="off">
+              <button id="send-btn" class="btn-send" title="Send (Enter)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar Dashboard: Telemetry & Verified Campus Hub -->
+        <aside class="sidebar-panel">
+          
+          <!-- Live Telemetry Card -->
+          <div class="dashboard-card telemetry-card">
+            <div class="card-title">
+              <span>Engine Telemetry</span>
+              <div class="live-pulse-badge">
+                <span class="pulse-dot"></span> Live
+              </div>
+            </div>
+            <div class="stats-grid">
+              <div class="stat-cell">
+                <div id="total-queries-stat" class="stat-value">0</div>
+                <div class="stat-label">Queries Handled</div>
+              </div>
+              <div class="stat-cell">
+                <div id="resolution-rate-stat" class="stat-value">100%</div>
+                <div class="stat-label">Precision Rate</div>
+              </div>
+              <div class="stat-cell">
+                <div id="kb-count-stat" class="stat-value">10</div>
+                <div class="stat-label">Verified Circulars</div>
+              </div>
+              <div class="stat-cell">
+                <div id="fallback-stat" class="stat-value">0</div>
+                <div class="stat-label">Staff Escalations</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Emergency & Campus Helpdesk Directory Card -->
+          <div class="dashboard-card directory-card">
+            <div class="card-title">
+              <span>Campus Desks &amp; Emergency</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="sidebar-contact-list">
+              <div class="sidebar-contact-item emergency">
+                <div class="contact-icon">🚑</div>
+                <div class="contact-info">
+                  <div class="contact-name">Health Centre &amp; Ambulance</div>
+                  <div class="contact-detail"><strong>Ext 1100</strong> • 0416-220-2100 (24/7)</div>
+                </div>
+              </div>
+              <div class="sidebar-contact-item">
+                <div class="contact-icon">🛡️</div>
+                <div class="contact-info">
+                  <div class="contact-name">Security Command Post</div>
+                  <div class="contact-detail">Gate 2 Central Office • 24/7 Duty</div>
+                </div>
+              </div>
+              <div class="sidebar-contact-item">
+                <div class="contact-icon">💻</div>
+                <div class="contact-info">
+                  <div class="contact-name">CTS IT &amp; WiFi Helpdesk</div>
+                  <div class="contact-detail">Technology Tower TT-G20 • Ext 1400</div>
+                </div>
+              </div>
+              <div class="sidebar-contact-item">
+                <div class="contact-icon">🏢</div>
+                <div class="contact-info">
+                  <div class="contact-name">Student Support Office</div>
+                  <div class="contact-detail">Main Building MB-G12 • Ext 1200</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Campus Facility Hours Card -->
+          <div class="dashboard-card facility-hours-card">
+            <div class="card-title">
+              <span>Facility Schedules</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="sidebar-timings-list">
+              <div class="timing-row">
+                <span class="timing-place">Central Library</span>
+                <span class="timing-badge open">24/7 Exams</span>
+              </div>
+              <div class="timing-row">
+                <span class="timing-place">SJT &amp; TT Labs</span>
+                <span class="timing-badge">8:00 AM – 7:30 PM</span>
+              </div>
+              <div class="timing-row">
+                <span class="timing-place">Hostel Outpass</span>
+                <span class="timing-badge">VTOP 24h Prior</span>
+              </div>
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- TAB 2: Knowledge Base Explorer -->
+    <section id="tab-kb" class="tab-content">
+      <div class="kb-layout">
+        <div class="kb-header-intro">
+          <h2>Institutional Knowledge Base &amp; Policy Repository</h2>
+          <p>Search verified academic policies, campus venue guides, computing lab hours, and student welfare circulars.</p>
+        </div>
+
+        <div class="kb-filter-bar">
+          <div class="search-field">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="kb-search-box" class="kb-search-input" placeholder="Search policies by venue name, building code, exam SOP, or keyword..." oninput="filterKnowledgeBase()">
+          </div>
+          <select id="kb-cat-filter" class="category-dropdown" onchange="filterKnowledgeBase()">
+            <option value="ALL">All Categories (10)</option>
+            <option value="Classrooms & Venues">Classrooms &amp; Venues</option>
+            <option value="Lab Timings & Access">Lab Timings &amp; Access</option>
+            <option value="Event Registration">Event Registration</option>
+            <option value="Academic Procedures">Academic Procedures</option>
+            <option value="Campus Procedures">Campus Procedures</option>
+          </select>
+          <button class="btn-secondary" onclick="resetKbSearch()">Reset Filters</button>
+        </div>
+
+        <div id="kb-cards-grid" class="kb-grid">
+          <!-- Rendered dynamically by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: Benchmark Test Suite -->
+    <section id="tab-benchmark" class="tab-content">
+      <div class="benchmark-layout">
+        <div class="bench-header">
+          <div class="bench-title">
+            <h2>Institutional 10-Query Evaluation Benchmark</h2>
+            <p>Verification suite for policy grounding, confidence scoring, ambiguous query detection, and safe fallback routing.</p>
+          </div>
+          <div class="bench-actions-group">
+            <button class="btn-primary" onclick="runAllBenchmarkTests()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Run Benchmark Suite
+            </button>
+            <button class="btn-secondary" onclick="exportBenchmarkResults()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+              Export CSV
+            </button>
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="benchmark-table">
+            <thead>
+              <tr>
+                <th>Test #</th>
+                <th>Query Inquiry</th>
+                <th>Routing Category</th>
+                <th>Expected Outcome</th>
+                <th>Matched Topic / Routing</th>
+                <th>Score</th>
+                <th>Status</th>
+                <th>Run</th>
+              </tr>
+            </thead>
+            <tbody id="benchmark-table-body">
+              <!-- Rendered dynamically by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: Human Staff Interaction & Query Routing -->
+    <section id="tab-staff-queries" class="tab-content">
+      <div class="staff-desk-layout">
+        
+        <!-- Header Banner -->
+        <div class="staff-header-banner">
+          <div class="staff-header-text">
+            <h2>Human Staff Escalation &amp; Query Routing Console</h2>
+            <p>Problem Statement 1 Compliance: Grounded answers with official source documents &amp; FAQ titles; unverified inquiries routed to staff.</p>
+          </div>
+        </div>
+
+        <!-- Section 1: Live Policy Query & Grounding Dispatcher -->
+        <div class="staff-eval-card">
+          <div class="card-title-row">
+            <div>
+              <h3>Interactive Query Verification & Staff Escalation Dispatcher</h3>
+              <p class="card-subtitle">Submit any student inquiry below to verify against institutional knowledge base. When answered, source documents & FAQ titles are presented. When unavailable, it clearly states so and dispatches to staff.</p>
+            </div>
+          </div>
+
+          <!-- Query Input Row -->
+          <div class="staff-query-input-wrap">
+            <div class="input-with-icon">
+              <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" x2="16.65" y1="21" y2="16.65"/></svg>
+              <input type="text" id="staff-query-input" placeholder="Type any student question or test an out-of-scope query..." value="Where is SJT (Silver Jubilee Tower) and how are rooms numbered?">
+              <button id="btn-staff-query-clear" class="btn-clear-input" title="Clear input">&times;</button>
+            </div>
+            <button id="btn-staff-query-eval" class="btn-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+              Evaluate & Route
+            </button>
+          </div>
+
+          <!-- Quick Test Presets -->
+          <div class="staff-preset-row">
+            <span class="preset-label">One-Click Test Queries:</span>
+            <div class="preset-chips-scroll">
+              <button class="chip-staff-preset chip-verified" data-query="Where is SJT (Silver Jubilee Tower) and how are rooms numbered?">
+                ✓ SJT Rooms (KB001)
+              </button>
+              <button class="chip-staff-preset chip-verified" data-query="What are the engineering and computing lab timings in SJT and TT?">
+                ✓ Lab Timings (KB003)
+              </button>
+              <button class="chip-staff-preset chip-verified" data-query="What are Central Library hours and are reading halls open 24/7 during exams?">
+                ✓ 24/7 Library (KB004)
+              </button>
+              <button class="chip-staff-preset chip-verified" data-query="How does FFCS course registration work on VTOP?">
+                ✓ FFCS Register (KB006)
+              </button>
+              <button class="chip-staff-preset chip-ambiguous" data-query="Can I get permission for staying late at night?">
+                ⚠️ Late Permission (Ambiguous)
+              </button>
+              <button class="chip-staff-preset chip-fallback" data-query="What is the forecasted price of Bitcoin for tomorrow?">
+                ❌ Bitcoin Forecast (Out of Scope)
+              </button>
+              <button class="chip-staff-preset chip-fallback" data-query="Request special tuition fee waiver and semester exam postponement">
+                ❌ Fee Concession (Route to Staff)
+              </button>
+            </div>
+          </div>
+
+          <!-- Live Result Display Box -->
+          <div id="staff-eval-result-container" class="staff-eval-result-container">
+            <!-- Dynamically populated by JS on init -->
+          </div>
+        </div>
+
+        <!-- Section 2: Active Human Staff Escalation Queue -->
+        <div class="staff-queue-card">
+          <div class="queue-header-row">
+            <div>
+              <h3>Human Staff Escalation Queue & Dispatch Console</h3>
+              <p class="card-subtitle">Live tracker of unverified inquiries, ambiguous requests, and student tickets routed to university administrative staff.</p>
+            </div>
+            <div class="queue-actions">
+              <div class="queue-filters" id="queue-filter-group">
+                <button class="filter-pill active" data-filter="all">All (<span id="count-all-tickets">4</span>)</button>
+                <button class="filter-pill" data-filter="pending">Pending Review (<span id="count-pending-tickets">3</span>)</button>
+                <button class="filter-pill" data-filter="resolved">Resolved (<span id="count-resolved-tickets">1</span>)</button>
+              </div>
+              <button id="btn-manual-new-ticket" class="btn-secondary" onclick="openEscalateModal('Student manual support desk inquiry')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                New Ticket
+              </button>
+            </div>
+          </div>
+
+          <div class="table-wrapper">
+            <table class="staff-tickets-table">
+              <thead>
+                <tr>
+                  <th>Ticket ID</th>
+                  <th>Student Inquiry</th>
+                  <th>Routing Reason</th>
+                  <th>Source / FAQ Status</th>
+                  <th>Assigned Department</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="staff-tickets-tbody">
+                <!-- Dynamically populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Section 3: Physical & Administrative Escalation Points -->
+        <div class="staff-desks-grid">
+          <div class="contact-desk-card">
+            <div class="desk-icon-box">🏢</div>
+            <div class="desk-content">
+              <h4>Central Student Support Helpdesk</h4>
+              <p class="desk-loc">Main Building, Ground Floor (MB-G12)</p>
+              <div class="desk-meta">
+                <span><strong>Desk Officer:</strong> Mr. S. Ramanathan (Asst. Registrar)</span>
+                <span><strong>Hours:</strong> Mon – Fri: 8:30 AM – 5:30 PM</span>
+                <span><strong>Email:</strong> studentsupport@vit.ac.in</span>
+                <span><strong>Intercom Ext:</strong> 1045 / 1046</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-desk-card">
+            <div class="desk-icon-box">💻</div>
+            <div class="desk-content">
+              <h4>Centre for Technical Support (CTS)</h4>
+              <p class="desk-loc">Technology Tower, Ground Floor (TT-G20)</p>
+              <div class="desk-meta">
+                <span><strong>Scope:</strong> WiFi Access, VTOP Accounts, Bio-metric Desk</span>
+                <span><strong>Hours:</strong> Mon – Sat: 8:00 AM – 8:00 PM</span>
+                <span><strong>Email:</strong> cts@vit.ac.in • wifi.vit.ac.in</span>
+                <span><strong>Intercom Ext:</strong> 1400 / 1401</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-desk-card">
+            <div class="desk-icon-box">🏠</div>
+            <div class="desk-content">
+              <h4>Hostel Welfare & Warden Secretariat</h4>
+              <p class="desk-loc">Mens Block D (MH-G02) & Ladies Block F (LH-G01)</p>
+              <div class="desk-meta">
+                <span><strong>Scope:</strong> Night Slips, Weekend Leave, Mess & Room Approvals</span>
+                <span><strong>Hours:</strong> 24/7 Resident Warden Desk</span>
+                <span><strong>Email:</strong> hostelwelfare@vit.ac.in</span>
+                <span><strong>Intercom Ext:</strong> 1300 / 1301</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-desk-card">
+            <div class="desk-icon-box">🛡️</div>
+            <div class="desk-content">
+              <h4>Campus Security & Lost Property Control</h4>
+              <p class="desk-loc">Gate 2 Central Security Command Post</p>
+              <div class="desk-meta">
+                <span><strong>Scope:</strong> Lost Student IDs, Misplaced Laptops, Emergency Safety</span>
+                <span><strong>Hours:</strong> 24/7 Round-the-Clock Duty Desk</span>
+                <span><strong>Emergency Ambulance:</strong> Ext 1100 / 0416-220-2100</span>
+                <span><strong>Email:</strong> security@vit.ac.in</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Escalation Ticket Modal -->
+  <div id="escalation-modal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg>
+          Escalate to Student Support Desk
+        </h3>
+        <button id="modal-close-btn" class="btn-close-modal">&times;</button>
+      </div>
+      <form id="escalate-form" class="modal-body">
+        <div>
+          <label for="student-id-input">Student Registration Number</label>
+          <input type="text" id="student-id-input" placeholder="e.g. 23BCE1024" required>
+        </div>
+        <div>
+          <label for="student-email-input">Official Student Email</label>
+          <input type="email" id="student-email-input" placeholder="e.g. student.registration@vitstudent.ac.in" required>
+        </div>
+        <div>
+          <label for="escalate-query-input">Unresolved Inquiry</label>
+          <input type="text" id="escalate-query-input" readonly>
+        </div>
+        <div>
+          <label for="escalate-notes-input">Student Notes / Context</label>
+          <textarea id="escalate-notes-input" rows="3" placeholder="Provide any details to assist administrative officers in resolving your inquiry..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit-ticket">Submit Support Ticket</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Human Staff Response Composer Modal -->
+  <div id="staff-reply-modal" class="modal-overlay">
+    <div class="modal-card" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3 style="color: #0F172A;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #2563EB;"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
+          Human Staff Resolution Desk
+        </h3>
+        <button id="staff-reply-modal-close" class="btn-close-modal">&times;</button>
+      </div>
+      <form id="staff-reply-form" class="modal-body">
+        <div style="display: grid; grid-template-columns: 140px 1fr; gap: 0.75rem;">
+          <div>
+            <label>Ticket ID</label>
+            <input type="text" id="staff-reply-ticket-id" readonly style="font-family: var(--font-mono); font-weight: 800; background: #F1F5F9; color: #BE123C;">
+          </div>
+          <div>
+            <label>Duty Staff Officer</label>
+            <input type="text" id="staff-reply-officer-name" value="Mr. S. Ramanathan (MB-G12)" required>
+          </div>
+        </div>
+
+        <div>
+          <label>Student Inquiry (Routed Away from KB)</label>
+          <input type="text" id="staff-reply-query-input" readonly style="background: #FFF1F2; color: #9F1239; font-weight: 700;">
+        </div>
+
+        <div>
+          <label>Quick Pre-Drafted Staff Guidance (Click to Insert)</label>
+          <div class="staff-quick-templates" id="staff-quick-templates">
+            <!-- Dynamically populated based on query -->
+          </div>
+        </div>
+
+        <div>
+          <label for="staff-reply-text">Verified Human Staff Answer</label>
+          <textarea id="staff-reply-text" rows="4" placeholder="Enter verified manual guidance to send directly to the student's live chat session..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit-ticket" style="background: #1E3A8A; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Send Staff Answer & Pop Up on Student Chat
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Floating Toast Notification -->
+  <div id="toast-notification" class="toast-notification"></div>
+
+  <script src="app.js?v=2.5"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+[
+  {
+    "id": "KB001",
+    "category": "Classrooms & Venues",
+    "title": "SJT Classroom & Lab Locations",
+    "question": "Where is SJT (Silver Jubilee Tower) and how are rooms numbered?",
+    "keywords": ["sjt", "silver jubilee tower", "classroom", "location", "room number", "where is sjt", "building"],
+    "answer": "Silver Jubilee Tower (SJT) is located on the northern side of the main campus, adjacent to the Technology Tower (TT). SJT has 8 floors (G to 7). Room numbering follows: SJT-Gxx for Ground Floor, SJT-1xx for 1st Floor, SJT-4xx for 4th Floor, SJT-7xx for 7th Floor. The AI Innovate-A-Thon venue SJT-G07 is on the ground floor near the main porch entrance.",
+    "source": "VIT Campus Venue Guide 2026, Section 2.1"
+  },
+  {
+    "id": "KB002",
+    "category": "Classrooms & Venues",
+    "title": "Technology Tower (TT) & MB Locations",
+    "question": "Where are Technology Tower (TT) and Main Building (MB)?",
+    "keywords": ["tt", "technology tower", "mb", "main building", "location", "anna auditorium", "where is tt"],
+    "answer": "Technology Tower (TT) is directly opposite SJT across the central academic quad. Main Building (MB) is located near Gate 1 and houses central administrative offices, the Admissions office, and Dean offices. Anna Auditorium is situated behind TT near the Foodys cafeteria.",
+    "source": "VIT Campus Map & Directory, Doc Ref: VIT-DIR-2026"
+  },
+  {
+    "id": "KB003",
+    "category": "Lab Timings & Access",
+    "title": "Computing & Engineering Lab Timings",
+    "question": "What are the general computing and engineering lab timings at VIT?",
+    "keywords": ["lab timings", "lab hours", "computer lab", "programming lab", "timing", "open", "close", "labs"],
+    "answer": "Academic computing labs in SJT and TT operate from 8:00 AM to 7:30 PM on official working days (Monday through Friday). Evening special practice lab access is available from 7:30 PM to 10:00 PM with valid faculty/proctor approval and student ID verification.",
+    "source": "SCOPE/SENSE Academic Lab Guidelines AY 2026-27"
+  },
+  {
+    "id": "KB004",
+    "category": "Lab Timings & Access",
+    "title": "Central Library Reading Hall & Digital Resource Timings",
+    "question": "What are the Central Library and Digital Library timings?",
+    "keywords": ["library", "library timing", "central library", "digital library", "reading hall", "weekend library"],
+    "answer": "The Central Library operates from 8:00 AM to 12:00 Midnight on all working days. During Continuous Assessment Tests (CAT) and Final Assessment Tests (FAT), the Ground Floor Reading Hall remains open 24/7. Digital resource browsing and book checkout counters close at 9:00 PM.",
+    "source": "VIT Periyar Central Library Circular, 2026"
+  },
+  {
+    "id": "KB005",
+    "category": "Event Registration",
+    "title": "Riviera, Gravitas and Club Event Registration Procedure",
+    "question": "How do students register for co-curricular and cultural events or hackathons?",
+    "keywords": ["event registration", "register", "gravitas", "riviera", "hackathon", "club events", "vtop events"],
+    "answer": "Event registrations are conducted through the VTOP Portal under the 'Events & Fest' tab, or via the official VIT Riviera / Gravitas portals. Select the event, review eligibility/team criteria, complete any fee payment via the integrated payment gateway, and download your registration QR slip for entry verification.",
+    "source": "VIT Office of Students Welfare (OSW) Event SOP 2026"
+  },
+  {
+    "id": "KB006",
+    "category": "Academic Procedures",
+    "title": "FFCS (Fully Flexible Credit System) Course Registration",
+    "question": "How does the FFCS course registration process work?",
+    "keywords": ["ffcs", "course registration", "subject selection", "slot selection", "vtop ffcs", "credits", "faculty allocation"],
+    "answer": "FFCS registration occurs at the beginning of each semester on VTOP. Students select theoretical/lab courses, preferred time slots (e.g., A1, B1, etc.), and course instructors according to their CGPA-assigned time window. Mock registration is held 48 hours prior to the live window.",
+    "source": "VIT Academic Regulations & FFCS Handbook 2026"
+  },
+  {
+    "id": "KB007",
+    "category": "Academic Procedures",
+    "title": "Proctor Meeting & Leave Approval Procedures",
+    "question": "How do I schedule a proctor meeting or apply for hostel leave?",
+    "keywords": ["proctor", "leave approval", "hostel leave", "outpass", "proctor meet", "leave apply", "night slip"],
+    "answer": "Proctor meetings can be scheduled during designated weekly proctor hours or via VTOP messaging. For hostel outpass and weekend home leave, submit your application on VTOP Hostel Portal at least 24 hours prior. Automatic SMS/email OTP confirmation will be forwarded to registered parents before approval.",
+    "source": "VIT Student Welfare & Hostel Manual 2026"
+  },
+  {
+    "id": "KB008",
+    "category": "Campus Procedures",
+    "title": "Lost and Found Property Desk",
+    "question": "What is the procedure if I lose or find personal items on campus?",
+    "keywords": ["lost and found", "lost id card", "lost item", "misplaced", "security office", "found item"],
+    "answer": "All lost and found items must be reported to the Campus Security Central Control Office located near Gate 2 or the Student Support Helpdesk at MB-G12. Present your student ID to claim verified items. Lost ID cards can be re-issued by applying on VTOP under 'Services > ID Card Reissue'.",
+    "source": "Campus Security & General Services Guide 2026"
+  },
+  {
+    "id": "KB009",
+    "category": "Campus Procedures",
+    "title": "Health Centre & Emergency Medical Support",
+    "question": "Where is the Campus Health Centre and what are emergency medical procedures?",
+    "keywords": ["health centre", "hospital", "doctor", "medical emergency", "ambulance", "clinic", "pharmacy", "sick"],
+    "answer": "The VIT Health Centre is situated opposite the outdoor sports stadium near the Mens Hostel Block. It operates 24/7 with resident medical officers, observation wards, and a free basic pharmacy. For on-campus emergency ambulance transport, dial internal extension 1100 or call 0416-220-2100 immediately.",
+    "source": "VIT Health Centre SOP & Emergency Services 2026"
+  },
+  {
+    "id": "KB010",
+    "category": "Campus Procedures",
+    "title": "WiFi Access & CTS IT Support Desk",
+    "question": "How do I connect to campus WiFi and resolve network access issues?",
+    "keywords": ["wifi", "internet", "cts", "network", "vtop login error", "campus wifi", "mac address"],
+    "answer": "Connect to 'VIT-Student' SSID using your 8-character registration number and VTOP password. To register new laptops or smartphones, visit the Centre for Technical Support (CTS) portal at wifi.vit.ac.in. If connectivity issues persist, visit the CTS Helpdesk at TT-G20 or email cts@vit.ac.in.",
+    "source": "VIT CTS IT Support Manual 2026"
+  }
+]
